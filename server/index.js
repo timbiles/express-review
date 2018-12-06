@@ -6,11 +6,13 @@ const bodyParser = require('body-parser');
 // or
 // const {json} = require('body-parser')
 
-//app is express invoked. The .get .post .put .patch .delete .listen methods can be accessed from app.
+//app is equal to express invoked. The get/post/put/delete & listen methods can be accessed from app.
 const app = express();
 
 //memorize this. this is how to make bodyParser do its job.
 app.use(bodyParser.json());
+// if you destructured json from body-parser, it would look like this...
+app.use(json())
 
 //our fake DB (database)
 let music = [
@@ -29,7 +31,7 @@ let music = [
 ];
 
 //we start at three because we already have 3 songs in the music array
-let id = 3;
+let id = arr.length;
 
 /**
  * How the Request / Response Cycle Works
@@ -113,5 +115,5 @@ const port = 3001;
 
 //we tell express to actively listen to port 3001.
 app.listen(port, () => {
-  console.log(`Server is now listening to port ${port}`);
+  console.log(`Server listening on port ${port}`);
 });
